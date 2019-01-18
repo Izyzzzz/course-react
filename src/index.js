@@ -10,15 +10,15 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var makeBusiness =
+var MakeBusiness =
 /*#__PURE__*/
 function () {
-  function makeBusiness(owner) {
+  function MakeBusiness(owner) {
     var director = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Victor";
     var cash = arguments.length > 2 ? arguments[2] : undefined;
     var emp = arguments.length > 3 ? arguments[3] : undefined;
 
-    _classCallCheck(this, makeBusiness);
+    _classCallCheck(this, MakeBusiness);
 
     this.owner = owner;
     this.director = director;
@@ -26,7 +26,7 @@ function () {
     this.emp = emp;
   }
 
-  _createClass(makeBusiness, [{
+  _createClass(MakeBusiness, [{
     key: "make",
     value: function make() {
       var sumSponsors = _money.eu.concat(_money.rus, 'unexpected sponsor');
@@ -38,8 +38,8 @@ function () {
     }
   }]);
 
-  return makeBusiness;
+  return MakeBusiness;
 }();
 
-var makeBus = new makeBusiness('Sam', undefined, _money.money, _employ.employersNames);
+var makeBus = new MakeBusiness('Sam', undefined, _money.money, _employ.employersNames);
 makeBus.make();
