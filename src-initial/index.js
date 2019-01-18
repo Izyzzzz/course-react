@@ -1,7 +1,7 @@
 import {employersNames} from './employ';
 import {eu, rus, money} from './money';
 
-class makeBusiness {
+class MakeBusiness {
     constructor(owner, director = `Victor`, cash, emp){
         this.owner = owner;
         this.director = director;
@@ -17,6 +17,6 @@ class makeBusiness {
     }
 }
 
-const makeBus = new makeBusiness('Sam', undefined, money, employersNames);
+const makeBus = new MakeBusiness('Sam', undefined, money, employersNames);
 
 makeBus.make();
