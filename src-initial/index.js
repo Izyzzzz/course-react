@@ -1,6 +1,5 @@
-import {employersNames} from './employ';
-import {eu, rus, money} from './money';
-
+import {employ, Employ} from './employ';
+import {eu, rus, CalcCash, money} from './money';
 class MakeBusiness {
     constructor(owner, director = `Victor`, cash, emp){
         this.owner = owner;
@@ -17,6 +16,6 @@ class MakeBusiness {
     }
 }
 
-const makeBus = new MakeBusiness('Sam', undefined, money, employersNames);
+const makeBus = new MakeBusiness('Sam', undefined, money.total, employ.empl);
 
 makeBus.make();

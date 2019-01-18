@@ -6,11 +6,15 @@ const sponsors = {
 
 const {cash, eu, rus} = sponsors;
 
-function calcCash(...everyCash) {
-    let total = everyCash[1].reduce(( accumulator, currentValue ) => accumulator + currentValue, everyCash[0]);
-    return total;    
+class CalcCash {
+    constructor(...everyCash) {
+        this.everyCash = everyCash;
+    }
+    get total(){
+        return this.everyCash[1].reduce(( accumulator, currentValue ) => accumulator + currentValue, this.everyCash[0]);
+    }
 }
 
-let money = calcCash(null, cash);
+const money = new CalcCash(null, cash);
 
-export {eu, rus, money}
+export {eu, rus, CalcCash, money}

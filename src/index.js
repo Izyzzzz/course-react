@@ -41,5 +41,5 @@ function () {
   return MakeBusiness;
 }();
 
-var makeBus = new MakeBusiness('Sam', undefined, _money.money, _employ.employersNames);
+var makeBus = new MakeBusiness('Sam', undefined, _money.money.total, _employ.employ.empl);
 makeBus.make();
