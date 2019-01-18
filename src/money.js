@@ -1,16 +1,30 @@
-const sponsors = {
-    cash: [40000, 5000, 30400, 12000],
-    eu: ['SRL', 'PLO', 'J&K'],
-    rus: ['RusAuto', 'SBO']
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.money = exports.rus = exports.eu = void 0;
+var sponsors = {
+  cash: [40000, 5000, 30400, 12000],
+  eu: ['SRL', 'PLO', 'J&K'],
+  rus: ['RusAuto', 'SBO']
 };
+var cash = sponsors.cash,
+    eu = sponsors.eu,
+    rus = sponsors.rus;
+exports.rus = rus;
+exports.eu = eu;
 
-const {cash, eu, rus} = sponsors;
+function calcCash() {
+  for (var _len = arguments.length, everyCash = new Array(_len), _key = 0; _key < _len; _key++) {
+    everyCash[_key] = arguments[_key];
+  }
 
-function calcCash(...everyCash) {
-    let total = everyCash[1].reduce(( accumulator, currentValue ) => accumulator + currentValue, everyCash[0]);
-    return total;    
+  var total = everyCash[1].reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue;
+  }, everyCash[0]);
+  return total;
 }
 
-let money = calcCash(null, cash);
-
-export {eu, rus, money}
+var money = calcCash(null, cash);
+exports.money = money;
