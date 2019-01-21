@@ -38,6 +38,7 @@
   cursor: pointer;
   user-select: none;
   transition: 0.5s all;
+  flex-grow: 1;
 }
 
 .app-list-item.like .fa-heart {
@@ -50,5 +51,11 @@
 }
 
 .app-list-item.important .btn-star {
+    color: #aeaeae;
+}
+
+.date {
+    font-size: .8rem;
+    min-width: 75px;
     color: #aeaeae;
 }
