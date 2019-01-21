@@ -2,23 +2,17 @@ import React from 'react';
 
 
 import './post-list-item.css';
-class DateComponent extends React.Component {
-    constructor() {
-        super();
-        let today = new Date(),
-            date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-        this.state = {
-            date: date
-        };
-    }
-    render() {
-        return (
-            <div className='date d-flex justify-content-center align-items-center'>
-                {this.state.date}
-            </div>
-        );
-    }
+const DateComponent = () => {
+    
+    let today = new Date(),
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();   
+
+    return (
+        <div className='date d-flex justify-content-center align-items-center'>
+            {date}
+        </div>
+    );    
 }
 
 const PostListItem = () => {
