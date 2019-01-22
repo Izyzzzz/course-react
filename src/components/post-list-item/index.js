@@ -38,7 +38,7 @@ export default class PostListItem extends Component {
         })
     }
 
-    onConsel = () => {
+    onCancel = () => {
         this.setState({
             inputValue: this.props.label,
             isEdit: false,
@@ -85,7 +85,7 @@ export default class PostListItem extends Component {
                         <button
                         type="button"
                         className="btn btn-sm"
-                        onClick={this.onConsel}><i className="fa fa-ban"/></button>
+                        onClick={this.onCancel}><i className="fa fa-ban"/></button>
                     :
                         null
                     }
