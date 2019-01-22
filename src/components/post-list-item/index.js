@@ -8,27 +8,45 @@ export default class PostListItem extends Component {
         super(props);
         this.state = {
             important: false,
-            like: false
+            like: false,
+            isEdit: false,
+            inputValue: this.props.label
         };
-        this.onImportant = this.onImportant.bind(this);
-        this.onLike = this.onLike.bind(this);
     }
 
-    onImportant() {
-        this.setState(({important}) => ({
-            important: !important
-        }));
+    onImportant = () => {
+        this.setState(({
+            important: !this.state.important
+        }))
     }
 
-    onLike() {
-        this.setState(({like}) => ({
-            like: !like
-        }));
+    onLike = () => {
+        this.setState({
+            like: !this.state.like
+        })
+    }
+
+    onSwitch = () => {
+        this.setState({
+            isEdit: !this.state.isEdit,
+        })
+    }
+
+    onChange = (e) => {
+        this.setState({
+            inputValue: e.target.value,
+        })
+    }
+
+    onConsel = () => {
+        this.setState({
+            inputValue: this.props.label,
+            isEdit: false,
+        })
     }
 
     render() {
-        const {label} = this.props;
-        const {important, like} = this.state;
+        const {important, like, isEdit, inputValue} = this.state;
         let classNames = 'app-list-item d-flex justify-content-between';
         if (important) {
             classNames += ' important';
@@ -38,13 +56,39 @@ export default class PostListItem extends Component {
         }
         return (
             <div className={classNames}>
-                <span 
-                className="app-list-item-label"
-                onClick={this.onLike}>
-                    {label}
-                </span>
+                {!isEdit ? 
+                    <span 
+                    className="app-list-item-label"
+                    onClick={this.onLike}>
+                        {inputValue}
+                    </span>
+                : 
+                    <input
+                    className="app-list-item-label"
+                    onChange={this.onChange}
+                    type="text"
+                    value={inputValue}/>
+                }
                 <DateComponent/>
+                
                 <div className="d-flex justify-content-center align-items-center">
+                    <button
+                    type="button"
+                    className="btn btn-sm"
+                    onClick={this.onSwitch}>
+                    {!isEdit ?
+                        <i className="fa fa-edit"/>
+                    :
+                        <i className="fa fa-save"/>
+                    }</button>
+                    {isEdit ?
+                        <button
+                        type="button"
+                        className="btn btn-sm"
+                        onClick={this.onConsel}><i className="fa fa-ban"/></button>
+                    :
+                        null
+                    }
                     <button 
                         type="button" 
                         className="btn btn-star btn-sm"
