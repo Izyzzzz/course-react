@@ -29,7 +29,7 @@ export default class PostListItem extends Component {
     onSwitch = () => {
         this.setState({
             isEdit: !this.state.isEdit,
-        })
+        });
     }
 
     onChange = (e) => {
@@ -67,7 +67,8 @@ export default class PostListItem extends Component {
                     className="app-list-item-label"
                     onChange={this.onChange}
                     type="text"
-                    value={inputValue}/>
+                    value={inputValue}
+                    autoFocus/>
                 }
                 <DateComponent/>
                 
