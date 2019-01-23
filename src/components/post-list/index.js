@@ -6,7 +6,7 @@ import PostListItem from '../post-list-item/';
 
 const PostList = ({posts}) => {
 
-    const elements = posts.filter(item => typeof item == "object").map((item) => {
+    const elements = posts.filter(item => typeof item === "object" && !(item instanceof Array) && item).map((item) => {
         const {id, ...itemProps} = item;
         return (
             <li key={id} className="list-group-item">

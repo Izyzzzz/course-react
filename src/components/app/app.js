@@ -14,7 +14,11 @@ const App = () => {
         {label: 'Going to lealrn React', important: true, id: 'sds'},
         {label: 'That is so good', important: false, id: 'erer'},
         {label: 'I need a break...', important: false, id: 'fggf'},
-        1
+        `string`,
+        5,
+        null,
+        true,
+        []
     ]
 
     return (
