@@ -1,10 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import './post-add-form.css';
 
-const PostAddForm = () => {
+const BottomPanel = styled.div`
+    display: flex;
+    margin-top: 20px;
+`
+
+const PostAddForm = ({onAdd}) => {
     return (
-        <form className="bottom-panel d-flex">
+        <BottomPanel>
             <input
                 text="text"
                 placeholder="О чем вы думаете сейчас"
@@ -12,9 +18,11 @@ const PostAddForm = () => {
             />
             <button
                 type="submit"
-                className="btn btn-outline-secondary">
-                Добавить</button>
-        </form>
+                className="btn btn-outline-secondary"
+                onClick={() => onAdd('Hello')}>
+                Добавить
+                </button>
+        </BottomPanel>
     )
 }
 
