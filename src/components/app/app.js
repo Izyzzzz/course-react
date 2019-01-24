@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import idGenerator from 'react-id-generator';
+// import idGenerator from 'react-id-generator';
 
 import AppHeader from '../app-header/';
 import SearchPanel from '../search-panel/';
@@ -9,13 +9,15 @@ import PostAddForm from '../post-add-form/';
 
 import './app.css';
 
+import newId from './keyid';
+
 export default class App extends Component {
     constructor(props) {
         super(props);
         const data = [
-            {label: 'Going to lealrn React', important: true, id: idGenerator()},
-            {label: 'That is so good', important: false, id: idGenerator()},
-            {label: 'I need a break...', important: false, id: idGenerator()},
+            {label: 'Going to lealrn React', important: true, id: newId()},
+            {label: 'That is so good', important: false, id: newId()},
+            {label: 'I need a break...', important: false, id: newId()},
             `string`,
             5,
             null,
@@ -25,7 +27,7 @@ export default class App extends Component {
         const filterIt = data.filter(item => typeof item === "object" && !(item instanceof Array) && item);
         this.state = {
             data: filterIt
-        }
+        };
     }
         
     deleteItem = (id) => {
@@ -42,7 +44,7 @@ export default class App extends Component {
         const newItem = {
             label: body,
             important: false,
-            id: idGenerator()
+            id: newId()
         }
         this.setState(({data}) => {
             const newArr = [...data, newItem];
