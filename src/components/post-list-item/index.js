@@ -8,25 +8,10 @@ export default class PostListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            important: false,
-            like: false,
             isEdit: false,
             inputValue: this.props.label,
-            modal: false
-        
+            modal: false        
         };
-    }
-
-    onImportant = () => {
-        this.setState(({
-            important: !this.state.important
-        }))
-    }
-
-    onLike = () => {
-        this.setState({
-            like: !this.state.like
-        })
     }
 
     onSwitch = () => {
@@ -55,7 +40,8 @@ export default class PostListItem extends Component {
       }
 
     render() {
-        const {important, like, isEdit, inputValue} = this.state;
+        const {onToggleImportant, onToggleLike, important, like} = this.props;
+        const {isEdit, inputValue} = this.state;
         let classNames = 'app-list-item d-flex justify-content-between';
         if (important) {
             classNames += ' important';
@@ -68,7 +54,7 @@ export default class PostListItem extends Component {
                 {!isEdit ? 
                     <span 
                     className="app-list-item-label"
-                    onClick={this.onLike}>
+                    onClick={onToggleLike}>
                         {inputValue}
                     </span>
                 : 
@@ -102,7 +88,7 @@ export default class PostListItem extends Component {
                     <button 
                         type="button" 
                         className="btn btn-star btn-sm"
-                        onClick={this.onImportant}>
+                        onClick={onToggleImportant}>
                         <i className="fa fa-star"></i>
                     </button>
                     <button 
