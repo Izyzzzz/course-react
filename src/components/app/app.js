@@ -76,7 +76,7 @@ export default class App extends Component {
         }
 
         return items.filter( (item) => {
-            return item.label.indexOf(term) > -1
+            return item.label.toLowerCase().indexOf(term) > -1
         })
     }
 
@@ -100,14 +100,18 @@ export default class App extends Component {
         const {data, term, filter} = this.state;
         const liked = data.filter(item => item.like).length;
         const allPosts = data.length;
-
+        const allPostsOne = allPosts.toString().slice(-1);
+        const allPostsTwo = allPosts.toString().slice(-2, -1);
+        const ending = (allPostsOne >= '2' && allPostsOne <= '4' && allPostsTwo !== '1' ) ? 'и' :
+                        (allPostsOne === '1' && allPostsTwo !== '1')  ? 'ь' : 'ей';
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
 
         return (
             <div className="app">
                 <AppHeader
                     liked={liked}
-                    allPosts={allPosts}/>
+                    allPosts={allPosts}
+                    ending={ending}/>
                 <div className="search-panel d-flex">
                     <SearchPanel
                         onUpdateSearch={this.onUpdateSearch}/>
