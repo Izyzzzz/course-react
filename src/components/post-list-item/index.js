@@ -11,7 +11,9 @@ export default class PostListItem extends Component {
             important: false,
             like: false,
             isEdit: false,
-            inputValue: this.props.label
+            inputValue: this.props.label,
+            modal: false
+        
         };
     }
 
@@ -46,8 +48,13 @@ export default class PostListItem extends Component {
         })
     }
 
+    toggle = () => {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
+
     render() {
-        // const {onDelete} = this.props;
         const {important, like, isEdit, inputValue} = this.state;
         let classNames = 'app-list-item d-flex justify-content-between';
         if (important) {
@@ -98,8 +105,16 @@ export default class PostListItem extends Component {
                         onClick={this.onImportant}>
                         <i className="fa fa-star"></i>
                     </button>
+                    <button 
+                        type="button" 
+                        className="btn btn-trash btn-sm"
+                        onClick={this.toggle}>
+                        <i className="fa fa-trash-o"></i>
+                    </button>
                     <ModalWindows 
-                    onDelete={this.props.onDelete}/>                   
+                    onDelete={this.props.onDelete}
+                    toggle={this.toggle}
+                    modal={this.state.modal}/>                   
                     <i className="fa fa-heart"></i>
                 </div>
             </div>
