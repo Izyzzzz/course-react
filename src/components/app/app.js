@@ -13,9 +13,9 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         const data = [
-            {label: 'Going to lealrn React', important: true, id: 1},
-            {label: 'That is so good', important: false, id: 2},
-            {label: 'I need a break...', important: false, id: 3},
+            {label: 'Going to lealrn React', important: true, id: idGenerator()},
+            {label: 'That is so good', important: false, id: idGenerator()},
+            {label: 'I need a break...', important: false, id: idGenerator()},
             `string`,
             5,
             null,
@@ -26,8 +26,6 @@ export default class App extends Component {
         this.state = {
             data: filterIt
         }
-        // this.maxId = 4;
-        this.id = idGenerator('');
     }
         
     deleteItem = (id) => {
@@ -44,7 +42,7 @@ export default class App extends Component {
         const newItem = {
             label: body,
             important: false,
-            id: this.id
+            id: idGenerator()
         }
         this.setState(({data}) => {
             const newArr = [...data, newItem];
