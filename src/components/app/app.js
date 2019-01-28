@@ -5,22 +5,22 @@ import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 
-import getService from '../../services/getService';
+// import getService from '../../services/getService';
 
-const got = new getService();
+// const got = new getService();
 
-got.getAllCharacters()
-    .then(res => {
-        res.forEach(item => console.log(item.name));
-    });
-got.getAllBooks()
-    .then(res => {
-       res.forEach(item => console.log(item.name));
-    });
-got.getAllHouses()
-    .then(res => {
-        res.forEach(item => console.log(item.name));
-    });
+// got.getAllCharacters()
+//     .then(res => {
+//         res.forEach(item => console.log(item.name));
+//     });
+// got.getAllBooks()
+//     .then(res => {
+//        res.forEach(item => console.log(item.name));
+//     });
+// got.getAllHouses()
+//     .then(res => {
+//         res.forEach(item => console.log(item.name));
+//     });
 
 const App = () => {
     return (
