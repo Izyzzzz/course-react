@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 import getService from '../services/getService'
-
-
-
 export default class Base extends Component {
     constructor(props) {
         super(props);
@@ -12,26 +9,43 @@ export default class Base extends Component {
         };
     }
 
-    async getBase(){
-        const all = new getService();
+    componentDidMount(){
+        new getService().getResource()
+        .then(res => { 
+            this.setState( () => {
+                return{
+                    newBase: res
+                }
+            });
+        })
+    }
+
+    // newBase = () => {
+    //     if (this.state.newBase) {
         
-        const allBase = await all.getResource()
-            .then(res => { return res;
-                // console.log(res));
-                // this.setState( {newBase : res});
-            })
-        return allBase;
-    }    
-    
+    //         const elements = this.state.newBase.map((item) => {
+    //             return (
+    //                 <li >
+    //                     {item.name}
+    //                 </li>
+    //             )
+    //         });
+    //         return elements;
+            
+    //         }
+    // }
+
     render() {
-        // this.getBase();
-        const ret = this.getBase();
-        console.log(ret);
-        console.log(this.state.newBase);
+               
+                
       return (
         <div>
-            {/* {this.state.newBase} */}
+            {this.state.newBase ?
+                this.state.newBase.fruits[0].name : 'No'
+            }
         </div>
       );
     }
   }
+
+  
