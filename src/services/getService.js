@@ -5,10 +5,13 @@ export default class getService {
 
     async getResource(url) {
         const res = await fetch(`${this._apiBase}${url}`);
+        
 
         if(!res.ok) {
-            throw new Error(`Could not fetch ${url}` + 
-            `, received ${res.status}`);            
+            const error = new Error(`Could not fetch ${url}` + 
+            `, received ${res.status}`);
+            error.status = res.status;
+            throw error;
         }
         return await res.json();
     }
