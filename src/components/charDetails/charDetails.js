@@ -1,16 +1,31 @@
 import React, {Component} from 'react';
 import './charDetails.css';
 import gotService from '../../services/getService';
+import Spinner from '../spinner/spinner';
+import ErrorMessage from '../errorMessage';
 export default class CharDetails extends Component {
 
     gotService = new gotService();
 
     state = {
-        char: null
+        char: null,
+        error: false
     }
 
     componentDidMount() {
         this.updateChar();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.charId !== prevProps.charId) {
+            this.updateChar();
+        }
+    }
+
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
     }
 
     updateChar() {
@@ -22,15 +37,24 @@ export default class CharDetails extends Component {
             .then((char) => {
                 this.setState({char})
             })
+        // this.foo.bar = 0;
     }
 
     render() {
+
+        if (this.state.error) {
+            return <ErrorMessage />
+        }
 
         if(!this.state.char) {
             return <span className='select-error'>Please select a character</span>
         }
 
         const {name, gender, born, died, culture} = this.state.char;
+
+        if (!this.state.char) {
+            return <Spinner/>
+        }
 
         return (
             <div className="char-details rounded">

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import ErrorMessage from '../errorMessage';
+import CharacterPage from '../characterPage/characterPage';
 
 import './app.css';
 
@@ -12,23 +12,28 @@ export default class App extends Component {
     
     state = {
         isEdit: false,
-        selectedChar: 130
+        error: false
     };
+
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
+    }
 
     onSwitch = () => {
         this.setState({
             isEdit: !this.state.isEdit,
         });
     }
-
-    onCharSelected = (id) => {
-        this.setState({
-            selectedChar: id
-        })
-    }
     
     render() {
         const {isEdit} = this.state;
+
+        if (this.state.error) {
+            return <ErrorMessage />
+        }
+
         return (
             <> 
                 <Container>
@@ -45,14 +50,7 @@ export default class App extends Component {
                             </button>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onCharSelected={this.onCharSelected}/>
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.selectedChar}/>
-                        </Col>
-                    </Row>
+                    <CharacterPage/>                   
                 </Container>
             </>
         );
