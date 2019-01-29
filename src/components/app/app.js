@@ -7,37 +7,24 @@ import CharDetails from '../charDetails';
 
 import './app.css';
 
-// import getService from '../../services/getService';
-
-// const got = new getService();
-
-// got.getAllCharacters()
-//     .then(res => {
-//         res.forEach(item => console.log(item.name));
-//     });
-// got.getAllBooks()
-//     .then(res => {
-//        res.forEach(item => console.log(item.name));
-//     });
-// got.getAllHouses()
-//     .then(res => {
-//         res.forEach(item => console.log(item.name));
-//     });
-
-
-
-export default class App extends Component {
-    constructor() {
-        super();
-        this.state= {
-            isEdit: false
-        }
-    }
+export default class App extends Component {   
+    
+    
+    state = {
+        isEdit: false,
+        selectedChar: 130
+    };
 
     onSwitch = () => {
         this.setState({
             isEdit: !this.state.isEdit,
         });
+    }
+
+    onCharSelected = (id) => {
+        this.setState({
+            selectedChar: id
+        })
     }
     
     render() {
@@ -60,10 +47,10 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList onCharSelected={this.onCharSelected}/>
                         </Col>
                         <Col md='6'>
-                            <CharDetails />
+                            <CharDetails charId={this.selectedChar}/>
                         </Col>
                     </Row>
                 </Container>
