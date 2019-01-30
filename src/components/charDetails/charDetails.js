@@ -12,9 +12,10 @@ export default class CharDetails extends Component {
         error: false
     }
 
-    componentDidMount() {
-        this.updateChar();
-    }
+    // componentDidMount() {
+    //     this.updateChar();
+    // }
+
 
     componentDidUpdate(prevProps) {
         if (this.props.charId !== prevProps.charId) {
@@ -39,6 +40,7 @@ export default class CharDetails extends Component {
             })
         // this.foo.bar = 0;
     }
+    
 
     render() {
 
@@ -47,14 +49,15 @@ export default class CharDetails extends Component {
         }
 
         if(!this.state.char) {
-            return <span className='select-error'>Please select a character</span>
+            return <div className='select-error'>Please select a character</div>
         }
 
         const {name, gender, born, died, culture} = this.state.char;
 
-        if (!this.state.char) {
+        if (!name) {
             return <Spinner/>
         }
+        
 
         return (
             <div className="char-details rounded">

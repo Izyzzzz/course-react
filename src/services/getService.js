@@ -22,6 +22,7 @@ export default class getService {
     async getCharacter(id) {
         const character = await this.getResource(`/characters/${id}`);
         return this._transformCharacter(character);
+        // return this.onData(this._transformCharacter(character));
     }
     async getAllBooks() {
         const res = await this.getResource(`/books`);
@@ -70,5 +71,15 @@ export default class getService {
             released: book.released
         }
     }
+
+    // onData(item) {
+    //     for( let key in item) {
+    //         if(item[key] === '') {
+    //             item[key] = 'nodata/:}'
+    //         }
+    //     }
+    //     return item;
+    // }
+
 }
 
