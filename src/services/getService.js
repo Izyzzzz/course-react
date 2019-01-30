@@ -69,6 +69,6 @@ export default class getService {
             publiser: book.publiser,
             released: book.released
         }
-    }
+    }    
 }
 
