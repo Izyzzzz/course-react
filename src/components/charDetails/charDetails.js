@@ -9,13 +9,9 @@ export default class CharDetails extends Component {
 
     state = {
         char: null,
-        error: false
+        error: false,
+        loading: true
     }
-
-    // componentDidMount() {
-    //     this.updateChar();
-    // }
-
 
     componentDidUpdate(prevProps) {
         if (this.props.charId !== prevProps.charId) {
@@ -34,13 +30,18 @@ export default class CharDetails extends Component {
         if (!charId) {
             return;
         }
+        this.setState({
+            loading: true
+        })
         this.gotService.getCharacter(charId)
             .then((char) => {
-                this.setState({char})
+                this.setState({
+                    char,
+                    loading: false
+                })
             })
         // this.foo.bar = 0;
-    }
-    
+    }    
 
     render() {
 
@@ -50,16 +51,15 @@ export default class CharDetails extends Component {
 
         if(!this.state.char) {
             return <div className='select-error'>Please select a character</div>
-        }
+        }        
 
         const {name, gender, born, died, culture} = this.state.char;
-
-        if (!name) {
-            return <Spinner/>
-        }
         
+        if (this.state.loading) {
+            return <Spinner/>  
+        }        
 
-        return (
+        return (            
             <div className="char-details rounded">
                 <h4>{name}</h4>
                 <ul className="list-group list-group-flush">
