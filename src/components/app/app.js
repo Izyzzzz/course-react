@@ -3,12 +3,14 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
-import CharacterPage from '../characterPage/characterPage';
+import {CharacterPage, BookPage, HousePage} from '../pages';
+import gotService from '../../services/getService';
 
 import './app.css';
 
 export default class App extends Component {   
     
+    gotService = new gotService();
     
     state = {
         isEdit: false,
@@ -50,7 +52,9 @@ export default class App extends Component {
                             </button>
                         </Col>
                     </Row>
-                    <CharacterPage/>                   
+                    <CharacterPage/>
+                    <BookPage/>
+                    <HousePage/>                
                 </Container>
             </>
         );

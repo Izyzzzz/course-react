@@ -3,19 +3,32 @@ import './charDetails.css';
 import gotService from '../../services/getService';
 import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMessage';
+
+const Field = ({item, field, label}) => {
+    return (
+        <li className="list-group-item d-flex justify-content-between">
+            <span className="term">{label}</span>
+            <span>{item[field] || 'nodate:}'}</span>
+        </li>
+    )
+}
+
+export {
+    Field
+}
 export default class CharDetails extends Component {
 
     gotService = new gotService();
 
     state = {
-        char: null,
+        item: null,
         error: false,
         loading: true
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.charId !== prevProps.charId) {
-            this.updateChar();
+        if (this.props.itemId !== prevProps.itemId) {
+            this.updateItem();
         }
     }
 
@@ -25,35 +38,38 @@ export default class CharDetails extends Component {
         })
     }
 
-    updateChar() {
-        const {charId} = this.props;
-        if (!charId) {
+    updateItem() {
+        const {itemId, getDataId} = this.props;
+        if (!itemId) {
             return;
         }
         this.setState({
             loading: true
         })
-        this.gotService.getCharacter(charId)
-            .then((char) => {
-                this.setState({
-                    char,
-                    loading: false
-                })
+        getDataId(itemId)
+        .then((item) => {
+            this.setState({
+                item,
+                loading: false
             })
+        })
         // this.foo.bar = 0;
     }    
 
     render() {
+        // const {plaseSelect} = this.props;
 
         if (this.state.error) {
             return <ErrorMessage />
         }
 
-        if(!this.state.char) {
+        if(!this.state.item) {
+            // return <div className='select-error'>{plaseSelect}</div>
             return <div className='select-error'>Please select a character</div>
         }        
 
-        const {name, gender, born, died, culture} = this.state.char;
+        const {item} = this.state;
+        const {name} = item;
         
         if (this.state.loading) {
             return <Spinner/>  
@@ -63,22 +79,11 @@ export default class CharDetails extends Component {
             <div className="char-details rounded">
                 <h4>{name || 'nodate:}'}</h4>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Gender</span>
-                        <span>{gender || 'nodate:}'}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Born</span>
-                        <span>{born || 'nodate:}'}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Died</span>
-                        <span>{died || 'nodate:}'}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Culture</span>
-                        <span>{culture || 'nodate:}'}</span>
-                    </li>
+                    {
+                        React.Children.map(this.props.children, (child) => {
+                            return React.cloneElement(child, {item})
+                        })
+                    }
                 </ul>
             </div>
         );

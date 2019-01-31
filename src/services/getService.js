@@ -3,7 +3,7 @@ export default class getService {
         this._apiBase = 'https://www.anapioficeandfire.com/api';
     }
 
-    async getResource(url) {
+    getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
         
 
@@ -15,27 +15,27 @@ export default class getService {
         }
         return await res.json();
     }
-    async getAllCharacters() {
+    getAllCharacters = async () => {
         const res = await this.getResource(`/characters?page=5&pageSize=10`);
         return res.map(this._transformCharacter);
     }
-    async getCharacter(id) {
+    getCharacter = async (id) => {
         const character = await this.getResource(`/characters/${id}`);
         return this._transformCharacter(character);
     }
-    async getAllBooks() {
-        const res = await this.getResource(`/books`);
+    getAllBooks = async () => {
+        const res = await this.getResource(`/books`);        
         return res.map(this._transformBook);
     }
-    async getBook(id) {
+    getBook = async (id) => {
         const book = await this.getResource(`/books/${id}`);
         return this._transformBook(book);
     }
-    async getAllHouses() {
+    getAllHouses = async () => {
         const res = await this.getResource(`/houses`);
         return res.map(this._transformHouse);
     }
-    async getHouse(id) {
+    getHouse = async (id) => {
         const house = await this.getResource(`/houses/${id}`);
         return this._transformHouse(house);
     }
@@ -58,7 +58,8 @@ export default class getService {
             words: house.words,
             titles: house.titles,
             overload: house.overload,
-            ancestralWeapons: house.ancestralWeapons
+            ancestralWeapons: house.ancestralWeapons,
+            url: house.url
         }
     }
 
@@ -67,8 +68,9 @@ export default class getService {
             name: book.name,
             numberOfPages: book.numberOfPages,
             publiser: book.publiser,
-            released: book.released
+            released: book.released,
+            url: book.url
         }
-    }    
+    }
 }
 
