@@ -41,7 +41,7 @@ export default class HousePage extends Component {
         const charDetails = (
             <CharDetails 
                 itemId={this.state.selectedHouse}
-                // plaseSelect={'Please select a house'}               
+                plaseSelect={'Please select a house'}               
                 getDataId={this.gotService.getHouse}>
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>

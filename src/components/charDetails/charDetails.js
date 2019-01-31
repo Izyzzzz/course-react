@@ -57,15 +57,14 @@ export default class CharDetails extends Component {
     }    
 
     render() {
-        // const {plaseSelect} = this.props;
+        const {plaseSelect} = this.props;
 
         if (this.state.error) {
             return <ErrorMessage />
         }
 
         if(!this.state.item) {
-            // return <div className='select-error'>{plaseSelect}</div>
-            return <div className='select-error'>Please select a character</div>
+            return <div className='select-error'>{plaseSelect}</div>
         }        
 
         const {item} = this.state;
