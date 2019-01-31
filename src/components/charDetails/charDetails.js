@@ -5,6 +5,11 @@ import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMessage';
 
 const Field = ({item, field, label}) => {
+    if (Array.isArray(item[field])) {
+        if(!item[field][0]) {
+            item[field] = item[field][0];
+        }        
+    }
     return (
         <li className="list-group-item d-flex justify-content-between">
             <span className="term">{label}</span>
