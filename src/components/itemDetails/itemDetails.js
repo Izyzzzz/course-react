@@ -8,7 +8,12 @@ const Field = ({item, field, label}) => {
     
     if(Array.isArray(item[field]) && !item[field][0]) {
         item[field] = item[field][0];
-    }              
+    }
+    if(field === 'released') {
+        item[field] = item[field].slice(0, 10);
+        console.log(field, field, item[field]);
+    }
+    // console.log(field);
     
     return (
         <li className="list-group-item d-flex justify-content-between">
@@ -47,6 +52,14 @@ export default class ItemDetails extends Component {
         })
     }
 
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false,
+            status: err.status
+        });
+    }
+
     updateItem() {
         const {itemId, getDataId} = this.props;
         if (!itemId) {
@@ -62,6 +75,7 @@ export default class ItemDetails extends Component {
                 loading: false
             })
         })
+        .catch(this.onError);
         // this.foo.bar = 0;
     }    
 

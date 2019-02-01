@@ -47,7 +47,7 @@ export default class App extends Component {
                                 const {id} = match.params;
                             return <BooksItem bookId={id}/>}
                         } />
-                        <Route patn='' exact component={NoMatch} />
+                        <Route component={NoMatch} />
                     </Switch>  
                     </Container>
                 </div>
@@ -61,6 +61,7 @@ export default class App extends Component {
 function NoMatch({ location }) {
     return (
       <div>
+          <img className="img-nomatch d-flex" src="/img/404.png" alt="error"/>
         <h3 className="title-nomatch">
           No match for <code> - {location.pathname}</code>
         </h3>

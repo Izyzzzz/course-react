@@ -14,6 +14,7 @@
 
 .title-nomatch {
     text-align: center;
+    color: #fff;
 }
 
 .button-back {
@@ -22,8 +23,12 @@
     margin: 10px auto;
     padding: 5px;
     border-radius: 15px;
+    background: #fff;
 }
 .button-back:hover {
     background: #999;
     color: #fff;
+}
+.img-nomatch {
+    margin: auto;
 }

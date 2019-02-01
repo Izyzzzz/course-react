@@ -6,6 +6,7 @@ import './pages.css'
 export default class BooksItem extends Component {
 
     gotService = new gotService();
+
     render() {
         return (
             <div className="item-page">
