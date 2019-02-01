@@ -11,3 +11,19 @@
     text-align: center;
     padding: 5px 0;
 }
+
+.title-nomatch {
+    text-align: center;
+}
+
+.button-back {
+    border: 1px solid #999;
+    max-width: 100px;
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 15px;
+}
+.button-back:hover {
+    background: #999;
+    color: #fff;
+}
