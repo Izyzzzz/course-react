@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './charDetails.css';
+import './itemDetails.css';
 import gotService from '../../services/getService';
 import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMessage';
@@ -21,7 +21,7 @@ const Field = ({item, field, label}) => {
 export {
     Field
 }
-export default class CharDetails extends Component {
+export default class ItemDetails extends Component {
 
     gotService = new gotService();
 
@@ -29,6 +29,10 @@ export default class CharDetails extends Component {
         item: null,
         error: false,
         loading: true
+    }
+
+    componentDidMount() {
+        this.updateItem()
     }
 
     componentDidUpdate(prevProps) {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ItemList from '../itemList';
-import CharDetails, {Field} from '../charDetails';
+import ItemDetails, {Field} from '../itemDetails';
 import ErrorMessage from '../errorMessage';
 import gotService from '../../services/getService';
 import RowBlock from '../rowBlock';
@@ -38,8 +38,8 @@ export default class HousePage extends Component {
             renderItem={({name}) => `${name}`}/>
         )
         
-        const charDetails = (
-            <CharDetails 
+        const itemDetails = (
+            <ItemDetails 
                 itemId={this.state.selectedHouse}
                 plaseSelect={'Please select a house'}               
                 getDataId={this.gotService.getHouse}>
@@ -48,11 +48,11 @@ export default class HousePage extends Component {
                 <Field field='titles' label='Titles'/>
                 <Field field='overload' label='Overload'/>
                 <Field field='ancestralWeapons' label='Ancestral Weapons'/>
-            </CharDetails>
+            </ItemDetails>
         )
 
         return (
-            <RowBlock left={itemList} right={charDetails}/>
+            <RowBlock left={itemList} right={itemDetails}/>
         )
     }
 }

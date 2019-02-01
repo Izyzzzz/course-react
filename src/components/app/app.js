@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {Col, Row, Container} from 'reactstrap';
+import {Container} from 'reactstrap';
 import Header from '../header';
-import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
-import {CharacterPage, BookPage, HousePage} from '../pages';
+import {CharacterPage, BookPage, HousePage, BooksItem, HomePage} from '../pages';
 import gotService from '../../services/getService';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import './app.css';
 
@@ -23,40 +23,32 @@ export default class App extends Component {
         })
     }
 
-    onSwitch = () => {
-        this.setState({
-            isEdit: !this.state.isEdit,
-        });
-    }
     
     render() {
-        const {isEdit} = this.state;
 
         if (this.state.error) {
             return <ErrorMessage />
         }
 
         return (
-            <> 
-                <Container>
-                    <Header />
-                </Container>
-                <Container>
-                    <Row>
-                        <Col lg={{size: 5, offset: 0}}>
-                            { !isEdit ? <RandomChar/> : null}                          
-                            <button 
-                                onClick={this.onSwitch} 
-                                className="button-hide d-flex justify-content-center">
-                                { !isEdit ? 'Hide' : 'Show'} 
-                            </button>
-                        </Col>
-                    </Row>
-                    <CharacterPage/>
-                    <BookPage/>
-                    <HousePage/>                
-                </Container>
-            </>
+            <Router>
+                <div className="app"> 
+                    <Container>
+                        <Header />
+                    </Container>
+                    <Container>
+                        <Route path='/' exact component={HomePage} />                        
+                        <Route path='/characters' component={CharacterPage} />
+                        <Route path='/houses' component={HousePage} />
+                        <Route path='/books' exact component={BookPage} />
+                        <Route path='/books/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                            return <BooksItem bookId={id}/>}
+                        } />      
+                    </Container>
+                </div>
+            </Router>
         );
     }
 };
