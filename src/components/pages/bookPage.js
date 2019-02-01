@@ -5,13 +5,13 @@ import gotService from '../../services/getService';
 import {withRouter} from 'react-router-dom';
 import './pages.css'
 
-class bookPage extends Component {
+class BookPage extends Component {
 
     gotService = new gotService();
 
     state = {
         error: false
-    }    
+    }
 
     componentDidCatch() {
         this.setState({
@@ -38,4 +38,4 @@ class bookPage extends Component {
     }
 }
 
-export default withRouter(bookPage);
+export default withRouter(BookPage);

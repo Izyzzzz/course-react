@@ -10,7 +10,6 @@ export default class CharacterPage extends Component {
     gotService = new gotService();
 
     state = {
-        selectedChar: 130,
         error: false
     }    
 

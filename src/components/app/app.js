@@ -6,7 +6,7 @@ import {CharacterPage, BookPage, HousePage, BooksItem, HomePage} from '../pages'
 import gotService from '../../services/getService';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import './app.css';
+import './index.css';
 
 export default class App extends Component {   
     
