@@ -3,7 +3,7 @@ import './errorMessage.css';
 import img404 from './404.png';
 import img408 from './408.jpg';
 import img410 from './410.jpg';
-import imgError from './error.jpg';
+import imgError from './error.png';
 
 export default class ErrorMessage extends Component {
     
@@ -13,6 +13,7 @@ export default class ErrorMessage extends Component {
             img: null
         }
     }
+
     render() {
         const {status} =this.props;
         switch(status){
@@ -27,11 +28,14 @@ export default class ErrorMessage extends Component {
             break;
             default:
                 this.img =  imgError;
+                this.button = <a href="/" className="button-back d-flex justify-content-center">Back</a>;
+                
         }
         return (
             <>
-                <img src={this.img} alt='error'></img>
-                <span>Something goes wrong</span>
+                <img className="img-error d-flex" src={this.img} alt='error'></img>
+                <p className="text-error">Something goes wrong</p>
+                {this.button}
             </>
         )
     }
