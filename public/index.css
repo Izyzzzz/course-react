@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.wrap {
+  background: linear-gradient(180deg, #0837B0 0%, #021E66 100%);
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.block {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 34px;
+}
+.block-number {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  font-family: Roboto;
+  font-size: 150px;
+  color: #000000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  min-width: 300px;
+  height: 300px;
+  background: #FFFFFF;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  grid-column: 1 / 4;
+}
+.block-plus {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 65px;
+  height: 65px;
+  background: #089C20;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  padding: 2.5px;
+  outline: none;
+}
+.block-plus:hover {
+  background: green;
+
+}
+.block-minus {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 65px;
+  height: 65px;
+  background: #E7AA10;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  padding: 2.5px;
+  outline: none;
+}
+.block-minus:hover {
+  background: #d0990f;
+
+}
+.block-reset {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 65px;
+  height: 65px;
+  background: #CF1C1C;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  padding: 2.5px;
+  outline: none;
+}
+.block-reset:hover {
+  background: #b80a0a;
+
+}
