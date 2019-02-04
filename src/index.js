@@ -33,3 +33,25 @@ const update = () => {
 }
 
 store.subscribe(update);
+
+// const getResource = async () => {
+//     const res = await fetch(process.env.PUBLIC_URL + './db.json'),
+//         base = await res.json();
+//     return base;
+// }
+
+// setTimeout(() => {
+    // let myShows = Base.numbers.filter(item => item.const);
+    // return myShows;
+// }, 1000);
+// console.log(myShows);
+// function upload(myShows) {
+//     let randomValue = myShows[Math.floor(Math.random() * myShows.length)];
+//     console.log(randomValue.const);
+//     return randomValue;
+// }
+// document.getElementById('down').addEventListener('click', () => {
+//     // document.getElementById('counter').textContent = randomValue.const;
+//     console.log(upload());
+// });
+
