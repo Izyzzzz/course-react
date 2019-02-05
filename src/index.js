@@ -8,6 +8,8 @@ const reducer = (state = 0, action) => {
             return state - 1;
         case 'RND':
             return state = 0;
+        case 'DOWN':
+            return Number.parseInt(action.value);
         default:
             return state;
     }
@@ -15,6 +17,7 @@ const reducer = (state = 0, action) => {
 const inc = () => ({type: 'INC'});
 const dec = () => ({type: 'DEC'});
 const rnd = () => ({type: 'RND'});
+const down = (value) => ({type: 'DOWN', value});
 
 const store = createStore(reducer);
 
@@ -34,24 +37,42 @@ const update = () => {
 
 store.subscribe(update);
 
-// const getResource = async () => {
-//     const res = await fetch(process.env.PUBLIC_URL + './db.json'),
-//         base = await res.json();
-//     return base;
-// }
+const getResource = async () => {
+    const res = await fetch(process.env.PUBLIC_URL + './db.json'),
+        base = await res.json();
+    return base;
+}
 
-// setTimeout(() => {
-    // let myShows = Base.numbers.filter(item => item.const);
-    // return myShows;
-// }, 1000);
-// console.log(myShows);
-// function upload(myShows) {
-//     let randomValue = myShows[Math.floor(Math.random() * myShows.length)];
-//     console.log(randomValue.const);
-//     return randomValue;
-// }
-// document.getElementById('down').addEventListener('click', () => {
-//     // document.getElementById('counter').textContent = randomValue.const;
-//     console.log(upload());
-// });
+document.getElementById('down').addEventListener('click', () => {
+    getResource()
+     .then(res => {
+         let baseFilter = res.numbers.filter(item => item.const);
+         let randomValue = baseFilter[Math.floor(Math.random() * baseFilter.length)];
+         store.dispatch(down(randomValue.const));
+     });
+    
+});
 
+
+document.getElementById('up').addEventListener('click', () => {
+        let uploadNum = document.getElementById('counter').innerHTML;
+        let uploadOb  = {saved: uploadNum};
+        postResource("http://localhost:3001/numbers", uploadOb);
+});
+const postResource = async (url, body) => {
+    const res = await fetch(url,
+    {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
+    });
+    
+    if (!res.ok) {
+        throw new Error(`status: ${res.status}`)
+    }
+    return await res.json();
+
+}
