@@ -56,7 +56,7 @@ document.getElementById('down').addEventListener('click', () => {
 
 document.getElementById('up').addEventListener('click', () => {
         let uploadNum = document.getElementById('counter').innerHTML;
-        let uploadOb  = {saved: uploadNum};
+        let uploadOb  = {const: uploadNum};
         postResource("http://localhost:3001/numbers", uploadOb);
 });
 const postResource = async (url, body) => {
