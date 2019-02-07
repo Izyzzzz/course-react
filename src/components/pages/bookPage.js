@@ -5,7 +5,7 @@ import gotService from '../../services/getService';
 import {withRouter} from 'react-router-dom';
 import './pages.css'
 
-class BookPage extends Component {
+export class BookPage extends Component {
 
     gotService = new gotService();
 

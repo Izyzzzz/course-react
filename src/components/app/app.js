@@ -13,7 +13,6 @@ export default class App extends Component {
     gotService = new gotService();
     
     state = {
-        isEdit: false,
         error: false
     };
 
