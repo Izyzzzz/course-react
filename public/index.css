@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-.wrap {
+/* .wrap {
   background: linear-gradient(180deg, #0837B0 0%, #021E66 100%);
   height: 100vh;
   display: grid;
@@ -91,4 +91,4 @@ code {
 .block-reset:hover {
   background: #b80a0a;
 
-}
+} */

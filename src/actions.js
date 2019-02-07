@@ -1,3 +1,1 @@
-export const inc = () => ({type: 'INC'});
-export const dec = () => ({type: 'DEC'});
-export const rnd = () => ({type: 'RND'});
+export const add = () => ({type: 'ADD_NEWS'});
